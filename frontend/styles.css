@@ -6,6 +6,7 @@
 
 /* Basic reset and settings for the Matrix effect */
 body {
+  font-family: 'Matrix Code NFI', monospace;
   margin: 0;
   padding: 0;
   background: #000;
