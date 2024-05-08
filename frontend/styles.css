@@ -1,53 +1,73 @@
+/* Matrix font import - Make sure to upload the font file in your project directory */
 @font-face {
   font-family: 'Matrix Code NFI';
-  src: url('./fonts/matrix code nfi.ttf') format('truetype');
+  src: url('/fonts/matrix_code_nfi.ttf') format('truetype');
 }
 
+/* Basic reset and settings for the Matrix effect */
 body {
-  font-family: 'Matrix Code NFI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #000;
   color: #00FF41;
-  line-height: 1.6;
-  background-color: #000000;
-  text-shadow: 0 0 3px #00FF41, 0 0 5px #00FF41, 0 0 5px #00FF41;
-  filter: blur(0.02rem);
-}
-
-.landing,
-.container,
-input,
-select,
-#output,
-#reportContainer {
-  color: #00FF41;
-  background-color: rgba(0, 0, 0, 0.7);
-  /* semi-transparent black for depth */
-  border-color: #00FF41;
-}
-
-.landing h1,
-.landing p,
-.btn-primary,
-.btn-secondary,
-footer,
-.agent_question,
-.agent_response {
-  /* ensure all text respects the theme */
-  color: #00FF41;
-  text-shadow: 0 0 3px #00FF41;
-}
-
-.btn-primary,
-.btn-secondary {
-  background: linear-gradient(to right, #005a2f, #006831);
-  border: none;
-}
-
-footer {
-  background: #000000;
-  /* pure black background */
-}
-
-#output,
-#reportContainer {
   font-family: 'Matrix Code NFI', monospace;
+  text-shadow: 0 0 3px #00FF41, 0 0 5px #00FF41, 0 0 5px #00FF41;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Define custom properties and animation */
+:root {
+  --timer: 1;
+}
+
+@keyframes animate-letter {
+  to {
+    --timer: 26;
+    /* 26 - the number of letters of the English alphabet */
+  }
+}
+
+/* Setting up the letter columns */
+.letter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  counter-reset: timer var(--timer);
+  animation: animate-letter 2s linear infinite;
+}
+
+.letter div:before {
+  content: counter(timer, lower-alpha);
+  display: block;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+/* Additional counters for multiple columns of text, adjust 'left' for positioning */
+.letter-1,
+.letter-2,
+.letter-3 {
+  position: absolute;
+  top: 0;
+  animation: animate-letter 2s linear infinite;
+}
+
+.letter-1 {
+  left: 30%;
+}
+
+.letter-2 {
+  left: 50%;
+}
+
+.letter-3 {
+  left: 70%;
+}
+
+.letter div:before {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
