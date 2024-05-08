@@ -6,6 +6,31 @@
   <meta name="description" content="A research assistant powered by GPT-4">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    /* New CSS rules for sticky footer */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    footer {
+      flex-shrink: 0;
+      background: linear-gradient(to right, #151A2D, #111827);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /* Your existing CSS styles */
     @font-face {
       font-family: 'Matrix Code NFI';
       src: url('/fonts/matrix_code_nfi.ttf') format('truetype');
@@ -151,7 +176,7 @@
         </span>
       </h1>
       <p class="max-w-5xl mx-auto mt-8" style="font-size:20px; color: #00FF41; text-shadow: 0 0 5px #00FF41;">
-        Welcome to gpt-researcher, an opinionated AI assistant for busy journalists & pros, who are looking to get a
+        Welcome to gpt-researcher v.0.0.1, an opinionated AI assistant for busy journalists & pros, who are looking to get a
         comprehensive report that normally would take you 3 hours to do, with grounded sources and references - and all
         of that in less than 3 minutes
       </p>
