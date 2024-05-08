@@ -1,0 +1,69 @@
+./
+├── backend/
+│   ├── report_type/
+│   ├── __init__.py
+│   ├── server.py
+│   ├── utils.py
+│   └── websocket_manager.py
+├── docs/
+│   ├── blog/
+│   ├── docs/
+│   ├── src/
+│   ├── static/
+│   ├── CNAME
+│   ├── README.md
+│   ├── babel.config.js
+│   ├── docusaurus.config.js
+│   ├── package.json
+│   ├── pydoc-markdown.yml
+│   ├── sidebars.js
+│   └── yarn.lock
+├── examples/
+│   └── sample_report.py
+├── frontend/
+│   ├── static/
+│   ├── index.html
+│   ├── pdf_styles.css
+│   ├── scripts.js
+│   └── styles.css
+├── gpt_researcher/
+│   ├── config/
+│   ├── context/
+│   ├── llm_provider/
+│   ├── master/
+│   ├── memory/
+│   ├── retrievers/
+│   ├── scraper/
+│   ├── utils/
+│   ├── README.md
+│   └── __init__.py
+├── multi_agents/
+│   ├── agents/
+│   ├── memory/
+│   ├── outputs/
+│   ├── README.md
+│   ├── main.py*
+│   ├── requirements.txt
+│   └── task.json
+├── scraping/
+│   ├── js/
+│   ├── processing/
+│   ├── scrape_skills.py
+│   └── web_scrape.py
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── README-zh_CN.md
+├── README.md
+├── cli.py
+├── docker-compose.yml
+├── main.py
+├── output.txt
+├── poetry.lock
+├── poetry.toml
+├── pyproject.toml
+├── requirements.txt
+└── setup.py
+
+27 directories, 40 files

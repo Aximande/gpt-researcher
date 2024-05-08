@@ -1,14 +1,14 @@
 {
-  "query": "Is AI in a hype cycle?",
+  "query": "quel a été l'impact de la photographie sur l'impressionisme ?",
   "max_subheaders": 3,
   "publish_formats": {
     "markdown": true,
     "pdf": true,
-    "docx": true
+    "docx": false
   },
   "guidelines": [
-    "The report MUST fully answer the original question",
-    "The report MUST be written in apa format",
-    "The report MUST be written in english"
+    "Le rapport DOIT répondre entièrement à la question initiale",
+    "Le rapport DOIT être rédigé selon les normes APA",
+    "Le rapport DOIT être écrit en français"
   ]
 }
