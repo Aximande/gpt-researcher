@@ -6,7 +6,7 @@
   <meta name="description" content="A research assistant powered by GPT-4">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* New CSS rules for sticky footer */
+    /* CSS rules for sticky footer */
     html,
     body {
       height: 100%;
@@ -16,6 +16,11 @@
     body {
       display: flex;
       flex-direction: column;
+      font-family: 'Matrix Code NFI', monospace;
+      color: #00FF41;
+      background-color: #000;
+      text-shadow: 0 0 3px #00FF41, 0 0 5px #00FF41, 0 0 5px #00FF41;
+      overflow: hidden;
     }
 
     main {
@@ -30,23 +35,13 @@
       padding: 10px 0;
     }
 
-    /* Your existing CSS styles */
+    /* Font import */
     @font-face {
       font-family: 'Matrix Code NFI';
       src: url('/fonts/matrix_code_nfi.ttf') format('truetype');
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #00FF41;
-      font-family: 'Matrix Code NFI', monospace;
-      text-shadow: 0 0 3px #00FF41, 0 0 5px #00FF41, 0 0 5px #00FF41;
-      overflow: hidden;
-      height: 100vh;
-    }
-
+    /* Other existing styles */
     .landing {
       display: flex;
       justify-content: center;
@@ -115,17 +110,6 @@
       box-shadow: 0px 10px 20px rgba(0, 255, 65, 0.3);
     }
 
-    footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background: linear-gradient(to right, #151A2D, #111827);
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-    }
-
     .margin-div,
     .agent_response {
       margin: 10px;
@@ -176,7 +160,7 @@
         </span>
       </h1>
       <p class="max-w-5xl mx-auto mt-8" style="font-size:20px; color: #00FF41; text-shadow: 0 0 5px #00FF41;">
-        Welcome to gpt-researcher v.0.0.1, an opinionated AI assistant for busy journalists & pros, who are looking to get a
+        Welcome to gpt-researcher, an opinionated AI assistant for busy journalists & pros, who are looking to get a
         comprehensive report that normally would take you 3 hours to do, with grounded sources and references - and all
         of that in less than 3 minutes
       </p>
@@ -192,10 +176,6 @@
       <div class="form-group">
         <label for="task" class="agent-question">What would you like me to research next?</label>
         <input type="text" id="task" name="task" class="form-control" required>
-        <input type="radio" name="agent" id="autoAgent" value="Auto Agent" checked hidden>
-      </div>
-      <div class="form-group">
-        <button type="button" id="btnShowAuto" class="btn btn-secondary mt-3 btn-show">Auto Agent</button>
       </div>
       <div class="form-group">
         <label for="report_type" class="agent-question">What type of report would you like me to generate?</label>
@@ -221,31 +201,21 @@
         <div class="alert alert-info" role="alert" id="status"></div>
         <a id="copyToClipboard" onclick="GPTResearcher.copyToClipboard()" class="btn btn-secondary mt-3"
           style="margin-right: 10px;">Copy to clipboard</a>
-        <a id="downloadLink" href="#" class="btn btn-secondary mt-3" style="margin-right: 10px;" target="_blank">Download as
+        <a id="downloadLink" href="#" class="btn btn-secondary mt-3" style="margin-right: 10px;"
+          target="_blank">Download as
           PDF</a>
         <a id="downloadLinkWord" href="#" class="btn btn-secondary mt-3" target="_blank">Download as Docx</a>
       </div>
-      </div>
-      </main>
+    </div>
+  </main>
 
-      <footer>
-        <p>GPT Researcher &copy; 2024 | <a target="_blank" href="https://github.com/assafelovic/gpt-researcher">GitHub
-            Page</a></p>
-      </footer>
+  <footer>
+    <p>GPT Researcher &copy; 2024 | <a target="_blank" href="https://github.com/assafelovic/gpt-researcher">GitHub
+        Page</a></p>
+  </footer>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
-      <script src="/site/scripts.js"></script>
-      <script>
-        const btnShowAuto = document.getElementById('btnShowAuto');
-        const autoAgentDiv = document.getElementById('autoAgentDiv');
-        const agentChoices = document.getElementsByClassName('agent-choices');
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+  <script src="/site/scripts.js"></script>
+</body>
 
-        btnShowAuto.addEventListener('click', function () {
-          btnShowAuto.style.display = 'none';
-          autoAgentDiv.style.display = 'flex';
-          agentChoices[0].style.display = 'none';
-        });
-      </script>
-      </body>
-
-      </html>
+</html>
