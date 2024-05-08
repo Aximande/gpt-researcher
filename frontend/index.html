@@ -9,75 +9,124 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/site/styles.css" />
   <style>
-    .avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-    }
-
-    .agent-name {
-      text-align: center;
-    }
-
-    .agent-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .agent-choices {
-      display: none;
-    }
-
-    .btn-show {
-      display: none;
-    }
-
     @font-face {
       font-family: 'Matrix Code NFI';
       src: url('/fonts/matrix_code_nfi.ttf') format('truetype');
     }
 
-    .matrix-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
       color: #00FF41;
       font-family: 'Matrix Code NFI', monospace;
+      text-shadow: 0 0 3px #00FF41, 0 0 5px #00FF41, 0 0 5px #00FF41;
       overflow: hidden;
-      pointer-events: none;
-      opacity: 0.5;
+      height: 100vh;
     }
 
-    @keyframes animate-letter {
-      to {
-        --timer: 26;
-      }
+    .landing {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
     }
 
-    .letter {
-      position: absolute;
-      top: -100px;
-      left: calc(5% + 5% * var(--n));
-      counter-reset: timer var(--timer);
-      animation: animate-letter 60s linear infinite;
+    .landing h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
     }
 
-    .letter div:before {
-      content: counter(timer, lower-alpha);
-      display: block;
-      font-size: 16px;
-      line-height: 20px;
-      text-shadow: 0 0 5px #00FF41;
+    .landing p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      max-width: 500px;
+      margin: auto;
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+      transition: all .3s ease-in-out;
+    }
+
+    .container:hover {
+      transform: scale(1.01);
+      box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    input,
+    select,
+    textarea {
+      background-color: rgba(0, 0, 0, 0.1);
+      border: 1px solid #00FF41;
+      color: #00FF41;
+      transition: all .3s ease-in-out;
+    }
+
+    input:hover,
+    input:focus,
+    select:hover,
+    select:focus {
+      background-color: #333;
+      border: 1px solid #00FF41;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      background: linear-gradient(to right, #019031, #00FF41);
+      border: none;
+      transition: all .3s ease-in-out;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+      transform: scale(1.1);
+      box-shadow: 0px 10px 20px rgba(0, 255, 65, 0.3);
+    }
+
+    footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(to right, #151A2D, #111827);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .margin-div,
+    .agent_response {
+      margin: 10px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      color: #fff;
+    }
+
+    #output,
+    #reportContainer {
+      height: 300px;
+      overflow: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+      margin-top: 10px;
     }
   </style>
 </head>
 
 <body>
   <div class="matrix-background">
+    <!-- Background with Matrix code rain effect -->
     <div class="letter" style="--n:0;">
       <div></div>
     </div>
@@ -116,7 +165,6 @@
     </div>
   </section>
 
-
   <main class="container" id="form">
     <div class="agent-item"><img src="/static/defaultAgentAvatar.JPG" class="avatar" alt="Auto Agent"></div>
     <form method="POST" class="mt-3" onsubmit="GPTResearcher.startResearch(); return false;">
@@ -126,9 +174,6 @@
         <input type="radio" name="agent" id="autoAgent" value="Auto Agent" checked hidden>
       </div>
       <div class="form-group">
-        <div class="row">
-          <!-- Additional form elements can be added here if needed -->
-        </div>
         <button type="button" id="btnShowAuto" class="btn btn-secondary mt-3 btn-show">Auto Agent</button>
       </div>
       <div class="form-group">
@@ -155,31 +200,31 @@
         <div class="alert alert-info" role="alert" id="status"></div>
         <a id="copyToClipboard" onclick="GPTResearcher.copyToClipboard()" class="btn btn-secondary mt-3"
           style="margin-right: 10px;">Copy to clipboard</a>
-        <a id="downloadLink" href="#" class="btn btn-secondary mt-3" style="margin-right: 10px;"
-          target="_blank">Download as PDF</a>
+        <a id="downloadLink" href="#" class="btn btn-secondary mt-3" style="margin-right: 10px;" target="_blank">Download as
+          PDF</a>
         <a id="downloadLinkWord" href="#" class="btn btn-secondary mt-3" target="_blank">Download as Docx</a>
       </div>
-    </div>
-  </main>
+      </div>
+      </main>
 
-  <footer>
-    <p>GPT Researcher &copy; 2024 | <a target="_blank" href="https://github.com/assafelovic/gpt-researcher">GitHub
-        Page</a></p>
-  </footer>
+      <footer>
+        <p>GPT Researcher &copy; 2024 | <a target="_blank" href="https://github.com/assafelovic/gpt-researcher">GitHub
+            Page</a></p>
+      </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
-  <script src="/site/scripts.js"></script>
-  <script>
-    const btnShowAuto = document.getElementById('btnShowAuto');
-    const autoAgentDiv = document.getElementById('autoAgentDiv');
-    const agentChoices = document.getElementsByClassName('agent-choices');
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+      <script src="/site/scripts.js"></script>
+      <script>
+        const btnShowAuto = document.getElementById('btnShowAuto');
+        const autoAgentDiv = document.getElementById('autoAgentDiv');
+        const agentChoices = document.getElementsByClassName('agent-choices');
 
-    btnShowAuto.addEventListener('click', function () {
-      btnShowAuto.style.display = 'none';
-      autoAgentDiv.style.display = 'flex';
-      agentChoices[0].style.display = 'none';
-    });
-  </script>
-  </body>
+        btnShowAuto.addEventListener('click', function () {
+          btnShowAuto.style.display = 'none';
+          autoAgentDiv.style.display = 'flex';
+          agentChoices[0].style.display = 'none';
+        });
+      </script>
+      </body>
 
-  </html>
+      </html>
