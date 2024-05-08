@@ -41,10 +41,6 @@ body {
   max-width: 500px;
   margin: auto;
   margin-bottom: 2rem;
-  color: #00FF41;
-    /* Ensuring text color is consistently Matrix green */
-  background-color: #0D0208;
-    /* Dark Matrix green background */
 }
 
 .container {
