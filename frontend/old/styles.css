@@ -12,13 +12,22 @@
   }
 }
 
+@keyframes animate-letter {
+  to {
+    --timer: 26;
+    /* Number of letters in the English alphabet */
+  }
+}
+
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Matrix Code NFI', monospace;
   color: #00FF41;
   line-height: 1.6;
   background-size: 200% 200%;
-  background-image: linear-gradient(45deg, #0D0208, #003B00, #008F11, #00FF41, #008F11, #003B00, #0D0208);
+  background-image: linear-gradient(45deg, #151A2D, #2D284D, #151A2D);
   animation: gradientBG 10s ease infinite;
+  text-shadow: 0 0 3px #00FF41, 0 0 5px #00FF41;
+  overflow: hidden;
 }
 
 .landing {
@@ -47,25 +56,25 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 20px;
-  background-color: rgba(13, 2, 8, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Slightly transparent black for Matrix feel */
   border-radius: 12px;
-  box-shadow: 0px 10px 25px rgba(0, 139, 17, 0.1);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
   transition: all .3s ease-in-out;
-  margin-bottom: 180px;
 }
 
 .container:hover {
   transform: scale(1.01);
-  box-shadow: 0px 10px 25px rgba(0, 139, 17, 0.1);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 input,
 select,
 #output,
 #reportContainer {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid #00FF41;
+  color: #00FF41;
   transition: all .3s ease-in-out;
 }
 
@@ -73,20 +82,15 @@ input:hover,
 input:focus,
 select:hover,
 select:focus {
-  background-color: #008F11;
+  background-color: #333;
+  color: #00FF41;
   border: 1px solid #00FF41;
-  box-shadow: 0px 4px 8px rgba(0, 139, 17, 0.1);
-  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 255, 65, 0.1);
 }
 
-.btn-primary {
-  background: linear-gradient(to right, #008F11, #00FF41);
-  border: none;
-  transition: all .3s ease-in-out;
-}
-
+.btn-primary,
 .btn-secondary {
-  background: linear-gradient(to right, #003B00, #003B00);
+  background: linear-gradient(to right, #019031, #00FF41);
   border: none;
   transition: all .3s ease-in-out;
 }
@@ -94,13 +98,7 @@ select:focus {
 .btn:hover {
   opacity: 0.8;
   transform: scale(1.1);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.agent_question {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  box-shadow: 0px 10px 20px rgba(0, 255, 65, 0.3);
 }
 
 footer {
@@ -108,29 +106,23 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(to right, #0D0208, #003B00);
-  color: #00FF41;
+  background: linear-gradient(to right, #151A2D, #111827);
+  color: white;
   text-align: center;
   padding: 10px 0;
 }
 
-.margin-div {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
-}
-
+.margin-div,
 .agent_response {
-  background-color: #003B00;
   margin: 10px;
   padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 12px;
-  color: #00FF41;
+  color: #fff;
 }
 
 #output {
   height: 300px;
-  font-family: 'Times New Roman', Times, , "Courier New", serif;
   overflow: auto;
   padding: 10px;
   margin-bottom: 10px;
@@ -138,10 +130,6 @@ footer {
 }
 
 #reportContainer {
-  background-color: rgba(13, 2, 8, 0.9);
-  border: none;
-  color: #fff;
-  transition: all .3s ease-in-out;
   padding: 10px;
   border-radius: 12px;
 }

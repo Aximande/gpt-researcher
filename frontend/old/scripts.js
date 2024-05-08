@@ -1,9 +1,6 @@
 const GPTResearcher = (() => {
   const init = () => {
-    // Not sure, but I think it would be better to add event handlers here instead of in the HTML
-    //document.getElementById("startResearch").addEventListener("click", startResearch);
     document.getElementById("copyToClipboard").addEventListener("click", copyToClipboard);
-
     updateState("initial");
   }
 
@@ -38,7 +35,7 @@ const GPTResearcher = (() => {
     socket.onopen = (event) => {
       const task = document.querySelector('input[name="task"]').value;
       const report_type = document.querySelector('select[name="report_type"]').value;
-      const agent = document.querySelector('input[name="agent"]:checked').value;
+      const agent = 'Auto Agent'; // or any default value you prefer
 
       const requestData = {
         task: task,
@@ -150,3 +147,5 @@ const GPTResearcher = (() => {
   };
 })();
 
+// Attach event listener to the form submission
+document.querySelector('form').addEventListener('submit', GPTResearcher.startResearch);
