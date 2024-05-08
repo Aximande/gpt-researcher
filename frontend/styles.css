@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Matrix Code NFI';
+  src: url('/fonts/matrix code nfi.ttf') format('truetype');
+  /* Adjust path as necessary */
+  font-weight: normal;
+  font-style: normal;
+}
+
 @keyframes gradientBG {
   0% {
     background-position: 0% 50%;
@@ -13,11 +21,14 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Matrix Code NFI', 'Montserrat', sans-serif;
   color: #00FF41;
   line-height: 1.6;
   background-size: 200% 200%;
-  background-image: linear-gradient(45deg, #0D0208, #003B00, #008F11, #00FF41, #008F11, #003B00, #0D0208);
+  background-color: #000;
+  /* Solid black for Matrix effect */
+  text-shadow: 0 0 5px #00FF41, 0 0 10px #00FF41;
+  /* Enhanced neon glow for text */
   animation: gradientBG 10s ease infinite;
 }
 
@@ -33,6 +44,8 @@ body {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  text-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41;
+  /* Stronger glow effect */
 }
 
 .landing p {
@@ -41,6 +54,10 @@ body {
   max-width: 500px;
   margin: auto;
   margin-bottom: 2rem;
+  color: #00FF41;
+  background-color: #0D0208;
+  text-shadow: 0 0 5px #00FF41;
+  /* Consistent Matrix green glow */
 }
 
 .container {
@@ -67,6 +84,8 @@ select,
   border: 1px solid #008F11;
   color: #00FF41;
   transition: all .3s ease-in-out;
+  text-shadow: 0 0 5px #00FF41;
+  /* Neon glow for inputs */
 }
 
 input:hover,
@@ -83,6 +102,8 @@ select:focus {
   background: linear-gradient(to right, #008F11, #00FF41);
   border: none;
   transition: all .3s ease-in-out;
+  text-shadow: 0 0 5px #00FF41;
+  /* Glow effect for button text */
 }
 
 .btn-secondary {
@@ -101,6 +122,10 @@ select:focus {
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  color: #00FF41;
+  /* Matrix green */
+  text-shadow: 0 0 5px #00FF41;
+  /* Glow effect for questions */
 }
 
 footer {
@@ -112,8 +137,9 @@ footer {
   color: #00FF41;
   text-align: center;
   padding: 10px 0;
+  text-shadow: 0 0 5px #00FF41;
+  /* Glow effect for footer text */
 }
-
 .margin-div {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -126,22 +152,40 @@ footer {
   padding: 10px;
   border-radius: 12px;
   color: #00FF41;
+  /* Matrix green */
+  text-shadow: 0 0 5px #00FF41;
+  /* Glow effect for response text */
 }
 
 #output {
   height: 300px;
-  font-family: 'Times New Roman', Times, "Courier New", serif;
+  font-family: 'Times New Roman', Times, 'Courier New', serif;
   overflow: auto;
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
+  background-color: #003B00;
+  /* Dark green background for output area */
+  color: #00FF41;
+  /* Matrix green text */
+  text-shadow: 0 0 5px #00FF41;
+  /* Text glow effect */
+  border: 1px solid #008F11;
+  /* Subtle Matrix-themed border */
+  border-radius: 12px;
+  /* Rounded corners */
+  transition: all .3s ease-in-out;
 }
 
 #reportContainer {
   background-color: rgba(13, 2, 8, 0.9);
+  /* Semi-transparent dark green */
   border: none;
   color: #fff;
-  transition: all .3s ease-in-out;
+  /* White text for contrast */
+  text-shadow: 0 0 5px #00FF41;
+  /* Glow effect for text */
   padding: 10px;
   border-radius: 12px;
+  transition: all .3s ease-in-out;
 }
