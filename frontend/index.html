@@ -20,12 +20,16 @@
 
     .agent-name {
       text-align: center;
+      color: #00FF41;
+      /* Matrix green */
     }
 
     .agent-item {
       display: flex;
       flex-direction: column;
       align-items: center;
+      color: #00FF41;
+      /* Matrix green */
     }
 
     .agent-choices {
@@ -34,6 +38,30 @@
 
     .btn-show {
       display: none;
+      /* Ensures these elements are hidden until needed */
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      background: linear-gradient(to right, #008F11, #00FF41);
+      border: none;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+      transform: scale(1.1);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      background: linear-gradient(to right, #0D0208, #003B00);
+      color: #00FF41;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>

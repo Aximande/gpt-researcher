@@ -41,6 +41,10 @@ body {
   max-width: 500px;
   margin: auto;
   margin-bottom: 2rem;
+  color: #00FF41;
+    /* Ensuring text color is consistently Matrix green */
+  background-color: #0D0208;
+    /* Dark Matrix green background */
 }
 
 .container {
@@ -56,16 +60,16 @@ body {
 
 .container:hover {
   transform: scale(1.01);
-  box-shadow: 0px 10px 25px rgba(0, 139, 17, 0.1);
+  box-shadow: 0px 15px 30px rgba(0, 139, 17, 0.2);
 }
 
 input,
 select,
 #output,
 #reportContainer {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #fff;
+  background-color: #003B00;
+  border: 1px solid #008F11;
+  color: #00FF41;
   transition: all .3s ease-in-out;
 }
 
