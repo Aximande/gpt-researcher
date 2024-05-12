@@ -51,10 +51,12 @@ def get_retriever(retriever):
     return retriever
 
 
-async def choose_agent(query, cfg):
+async def choose_agent(query, cfg, parent_query=None):
     """
     Chooses the agent automatically
     Args:
+        parent_query: In some cases the research is conducted on a subtopic from the main query.
+        Tge parent query allows the agent to know the main context for better reasoning.
         query: original query
         cfg: Config
 
@@ -62,6 +64,7 @@ async def choose_agent(query, cfg):
         agent: Agent name
         agent_role_prompt: Agent role prompt
     """
+    query = f"{parent_query} - {query}" if parent_query else f"{query}"
     try:
         response = await create_chat_completion(
             model=cfg.smart_llm_model,
@@ -282,13 +285,13 @@ async def get_report_introduction(query, context, role, config, websocket=None):
             websocket=websocket,
             max_tokens=config.smart_token_limit
         )
-        
+
         return introduction
     except Exception as e:
         print(f"{Fore.RED}Error in generating report introduction: {e}{Style.RESET_ALL}")
 
     return ""
-    
+
 def extract_headers(markdown_text: str):
     # Function to extract headers from markdown text
 
@@ -355,7 +358,7 @@ def table_of_contents(markdown_text: str):
 def add_source_urls(report_markdown: str, visited_urls: set):
     """
     This function takes a Markdown report and a set of visited URLs as input parameters.
-    
+
     Args:
       report_markdown (str): The `add_source_urls` function takes in two parameters:
       visited_urls (set): Visited_urls is a set that contains URLs that have already been visited. This
